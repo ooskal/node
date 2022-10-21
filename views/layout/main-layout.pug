@@ -13,16 +13,10 @@ html(lang="en")
                 ul.main-header__item-list
                     li.main-header__item
                         a(href="/", class=(path === '/' ? 'active' : '')) Shop
+                    li.main-header__item
+                        a(href="/admin/product", class=(path === '/admin/product' ? 'active' : '')) Product
                     li.main-header__item 
-                        a(href="/products", class=(path == '/products' ? 'active' : '')) products
+                        a(href="/shop/login", class=(path === '/shop/login' ? 'active' : '')) login
                     li.main-header__item 
-                        a(href="/cart", class=(path == '/cart' ? 'active' : '')) cart
-                    li.main-header__item 
-                        a(href="/search", class=(path == '/search' ? 'active' : '')) search
-                    li.main-header__item 
-                        a(href="/login", class=(path == '/login' ? 'active' : '')) login
-                    li.main-header__item 
-                        a(href="/sign", class=(path == '/sign' ? 'active' : '')) sign
-                  
-                        
+                        a(href="/shop/sign", class=(path === '/shop/sign' ? 'active' : '')) sign
         block content

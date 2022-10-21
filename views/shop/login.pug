@@ -1,0 +1,16 @@
+extends ../layout/main-layout.pug
+
+block styles
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/product.css")
+
+block content
+    main
+        form.product-form(action="http://localhost:3000/shop/login", method="POST")
+            .form-control
+                label(for="id") ID
+                input(type="text", name="id")#id
+                label(for="password") PW 
+                input(type="text", name="password")#password
+
+            button.btn(type="submit") Login

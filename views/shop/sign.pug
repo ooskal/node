@@ -1,0 +1,21 @@
+extends ../layout/main-layout.pug
+
+block styles
+    link(rel="stylesheet", href="/css/forms.css")
+    link(rel="stylesheet", href="/css/product.css")
+
+block content
+    main
+        form.product-form(action="http://localhost:3000/shop/sign", method="POST")
+            .form-control
+                label(for="id") Id
+                input(type="text", name="id")#id
+                label(for="pw") Password 
+                input(type="password" name="pw")#pw
+                label(for="name") Name
+                input(type="text" name="name")#name
+
+
+
+
+                button.btn(type="submit") sign

@@ -1,6 +1,8 @@
 const path = require("path");
 
 const express = require("express");
+
+const sequelize = require("./util/database");
 const bodyParser = require("body-parser");
 
 const app = express();
@@ -14,14 +16,15 @@ const shopRoutes = require("./routes/shop");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/admin", adminRoutes);
 app.use(shopRoutes);
+app.use("/admin", adminRoutes);
 
-app.use((req, res, next) => {
-  res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
-});
-
-app.get("");
-
-app.listen(3000);
-//서버 구축
+sequelize
+  .sync()
+  .then((result) => {
+    // console.log(result);
+    app.listen(3000);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
