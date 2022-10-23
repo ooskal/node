@@ -1,6 +1,7 @@
 const Product = require("../model/product");
 const User = require("../model/user");
 const mysql = require("mysql2");
+const { ConnectionTimedOutError } = require("sequelize");
 const connection = mysql.createConnection({
   host: "127.0.0.1",
   port: "3306",
@@ -10,12 +11,33 @@ const connection = mysql.createConnection({
 });
 
 connection.connect();
+//render에 파일경로 넣
 
-//프런트에서 서버로 데이터 보냄 fetch를 통해 전해줌
 exports.getIndex = (req, res, next) => {
-  res.render("shop/index", {
-    pageTitle: "shop",
-    path: "/",
+  //res.render("shop/index", {
+  //  pageTitle: "shop",
+  //  path: "/",
+  //});
+  // 세션이 로그인이면 히든출력, 아니면 index 출력
+  // if (req.session.isLogined) {
+  //   res.render("shop/hidden");
+  // } else {
+  //   res.render("shop/index");
+  // }
+
+  console.log("in");
+  connection.query("select * from books", function (err, rows) {
+    if (err) throw err;
+    if (!err) {
+      console.log(rows);
+      var title1 = rows.title;
+      var price1 = rows.price;
+      res.render("shop/index", {
+        pageTitle: "shop",
+        title: title1,
+        price: price1,
+      });
+    } else console.log("error while performing Query", err);
   });
 };
 

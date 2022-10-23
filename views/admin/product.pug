@@ -7,9 +7,11 @@ block styles
 
 block content
     main
-        form.product-form(action="/admin/product", method="POST")
+        form.product-form(action="http://localhost:3000/admin/product", method="POST")
             .form-control 
                 label(for="title") title 
                 input(type="text", name="title")#title
+                label(for="price") price 
+                input(type="number", name="price" min="0")#price
         
                 button.btn(type="submit") apply
