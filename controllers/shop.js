@@ -13,6 +13,12 @@ const connection = mysql.createConnection({
 connection.connect();
 //render에 파일경로 넣
 
+exports.getBooks = (req, res, next) => {
+  connection.query("select * from books", (err, result) => {
+    res.render("shop/books", { bookList: result });
+  });
+};
+
 exports.getIndex = (req, res, next) => {
   //res.render("shop/index", {
   //  pageTitle: "shop",

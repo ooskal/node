@@ -20,4 +20,6 @@ router.post("/shop/sign", shopController.PostSign);
 
 router.get("/", shopController.getIndex);
 
+router.get("/shop/books", shopController.getBooks);
+
 module.exports = router;
