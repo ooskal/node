@@ -9,8 +9,8 @@ block content
         form.product-form(action="http://localhost:3000/shop/login", method="POST")
             .form-control
                 label(for="id") ID
-                input(type="text", name="id")#id
+                input(type="text", name="id" required)
                 label(for="password") PW 
-                input(type="text", name="password")#password
+                input(type="text", name="pw" required)
 
             button.btn(type="submit") Login
